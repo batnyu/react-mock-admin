@@ -26,7 +26,8 @@ export default function MonacoEditorContainer(props) {
     "meal"
   ]`);
   const options = {
-    selectOnLineNumbers: true
+    selectOnLineNumbers: true,
+    scrollBeyondLastLine: false
   };
   const monacoRef = useRef(null);
 
@@ -36,9 +37,8 @@ export default function MonacoEditorContainer(props) {
         clientWidth: width,
         clientHeight: height
       } = monacoRef.current.containerElement;
-      console.log("width", width, "height", height);
-      // monacoRef.current.editor.layout({ width, height });
-      monacoRef.current.editor.layout();
+      // console.log("width", width, "height", height);
+      monacoRef.current.editor.layout({ width, height });
     };
     window.addEventListener("resize", handleResize);
     return () => {
@@ -48,11 +48,7 @@ export default function MonacoEditorContainer(props) {
 
   function editorDidMount(editor, monaco) {
     console.log("editorDidMount", editor);
-    // const {
-    //   clientWidth: width,
-    //   clientHeight: height
-    // } = monacoRef.current.containerElement;
-    // editor.layout({ width, height });
+    editor.layout({ width: 10000, height: 10000 });
     editor.focus();
   }
 
