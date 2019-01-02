@@ -1,42 +1,15 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
+import React from "react";
 import "./App.css";
-import MonacoEditor from "react-monaco-editor";
+import MonacoEditorContainer from "./components/MonacoEditorContainer";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      code: "// type your code..."
-    };
-  }
-
-  editorDidMount(editor, monaco) {
-    console.log("editorDidMount", editor);
-    editor.focus();
-  }
-  onChange(newValue, e) {
-    console.log("onChange", newValue, e);
-  }
-
-  render() {
-    const code = this.state.code;
-    const options = {
-      selectOnLineNumbers: true
-    };
-    return (
-      <MonacoEditor
-        width="800"
-        height="600"
-        language="javascript"
-        theme="vs-dark"
-        value={code}
-        options={options}
-        onChange={::this.onChange}
-        editorDidMount={::this.editorDidMount}
-      />
-    );
-  }
+export default function App() {
+  return (
+    <div className="App">
+      <div className="item1" />
+      <div className="item2" />
+      <div className="item3">
+        <MonacoEditorContainer />
+      </div>
+    </div>
+  );
 }
-
-export default App;
