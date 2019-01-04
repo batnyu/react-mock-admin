@@ -6,7 +6,7 @@ import Explorer from "../Explorer/Explorer";
 
 export default function ExplorerEditor() {
   const monacoEditorContainerRef = useRef();
-  const [code, setCode] = useState("");
+  const [code, setCode] = useState("//Choose a mock to open");
 
   function handleCodeChange(code) {
     setCode(JSON.stringify(code, null, 4));
@@ -17,7 +17,7 @@ export default function ExplorerEditor() {
     <SplitPane
       split="vertical"
       minSize={150}
-      defaultSize={"20%"}
+      defaultSize={"30%"}
       onDragFinished={() => monacoEditorContainerRef.current.handleResize()}
       paneStyle={{
         height: "100%"
